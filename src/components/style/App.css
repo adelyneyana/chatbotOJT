@@ -1,0 +1,38 @@
+.App {
+    text-align: center;
+  }
+  
+  .chatbox {
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .conversation {
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+  }
+  
+  .user-message, .agent-message {
+    margin: 10px 0;
+  }
+  
+  .suggestions button {
+    margin: 5px;
+  }
+  
+  .input-container input {
+    width: 80%;
+    padding: 5px;
+  }
+  
+  .input-container button {
+    padding: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
