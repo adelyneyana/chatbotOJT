@@ -1,46 +1,39 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
-import spacy
+from flask_cors import CORS  # <-- Import this
 from transformers import pipeline
 
 app = Flask(__name__)
-CORS(app)  # To allow frontend requests
 
-# Load NLP models
-nlp = spacy.load("en_core_web_sm")
+# Enable CORS
+CORS(app)  # This will allow all origins by default
+
 qa_pipeline = pipeline("question-answering")
 
-# Simple in-memory conversation log
-conversation_log = []
-
-# Function to generate agent response and suggestions
-def generate_reply(client_message):
-    # Example NLP task (spaCy)
-    doc = nlp(client_message)
-    entities = [ent.text for ent in doc.ents]
-
-    # Use Hugging Face for more advanced responses
-    context = "This is a general FAQ or knowledge base."
-    answer = qa_pipeline(question=client_message, context=context)
-
-    # Return a simple agent response and some suggestions
-    return f"Agent response: {answer['answer']}", ["Reply 1", "Reply 2", "Reply 3"]
-
-@app.route('/chat', methods=['POST'])
+@app.route("/chat", methods=["POST"])
 def chat():
-    data = request.json
-    client_message = data.get("message")
-
-    # Generate response and suggestions
-    agent_reply, suggestions = generate_reply(client_message)
-
-    # Log the conversation
-    conversation_log.append({"client": client_message, "agent": agent_reply})
-
+    data = request.json  # Expecting a JSON payload with 'message'
+    user_message = data.get("message")
+    
+    if not user_message:
+        return jsonify({"error": "Message is required"}), 400
+    
+    # Here, you can adjust the logic to handle the user message
+    # For this example, we're using the same question-answering pipeline as before
+    context = "France is a country in Europe. The capital of France is Paris."
+    question = user_message
+    
+    result = qa_pipeline({
+        'context': context,
+        'question': question
+    })
+    
+    agent_reply = result['answer']  # Getting the answer from the model
+    suggestions = ["Did you mean something else?", "Can you clarify?"]  # Example suggestions
+    
     return jsonify({
         "agent_reply": agent_reply,
         "suggestions": suggestions
     })
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
