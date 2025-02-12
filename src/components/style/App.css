@@ -3,36 +3,99 @@
   }
   
   .chatbox {
-    max-width: 600px;
+    max-width: 90%;
     margin: 0 auto;
-    border: 1px solid #ccc;
     padding: 20px;
     background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .conversation {
-    height: 300px;
-    overflow-y: scroll;
-    margin-bottom: 10px;
+    height: 700px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
   }
   
-  .user-message, .agent-message {
+  .message {
     margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  .suggestions button {
-    margin: 5px;
+  .user-message {
+    align-items: flex-end;
+  }
+  
+  .agent-message {
+    align-items: flex-start;
+  }
+  
+  .message-bubble {
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 75%;
+    word-wrap: break-word;
+  }
+  
+  .user-bubble {
+    background-color: #000;
+    color: white;
+  }
+  
+  .agent-bubble {
+    background-color: #e0e0e0;
+    color: black;
+  }
+  
+  .suggestions {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+  }
+  
+  .suggestion-button {
+    background-color: #f0f0f0;
+    border: none;
+    color: #007bff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  .suggestion-button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
   }
   
   .input-container input {
     width: 80%;
-    padding: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 16px;
   }
   
   .input-container button {
-    padding: 5px;
+    padding: 10px 15px;
     background-color: #000;
     color: white;
     border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .input-container button:hover {
+    background-color: #0056b3;
   }
   
