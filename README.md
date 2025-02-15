@@ -1,70 +1,154 @@
-# Getting Started with Create React App
+# Chatbot System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Description:**  
+This project is a simple backend for a chatbot that uses the Hugging Face `transformers` library to answer user questions based on predefined contexts. The backend uses Flask for handling API requests and supports communication with the frontend to simulate a conversation.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. Prerequisites
+2. Backend Setup (Flask)  
+   - Clone Repository  
+   - Install Dependencies  
+   - Environment Configuration  
+   - Run the Flask Server  
+3. Testing the Backend  
+   - Using Thunder Client (VS Code Extension)  
+4. Frontend Setup (React)  
+   - Clone Repository  
+   - Install Dependencies  
+   - Environment Configuration  
+   - Run the React App  
+5. Push Updates to the Repository
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Ensure you have the following installed on your computer:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Python** (v3.8 or higher)
+- **pip** (Python package manager)
+- **Virtual Environment (venv)**
+- **TensorFlow** (for Hugging Face transformers)  
+  - Run `pip install tensorflow` if not already installed.
+- **Flask**  
+  - Run `pip install flask` if not already installed.
+- **Hugging Face Transformers**  
+  - Run `pip install transformers` if not already installed.
 
-### `npm test`
+## Backend Setup (Flask)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone Repository
 
-### `npm run build`
+- Clone the backend repository using:
+  ```bash
+  git clone https://github.com/yourusername/chatbot-backend.git
+  cd chatbot-backend
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Install Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Create a virtual environment and activate it:
+  ```bash
+  python -m venv venv
+  .\venv\Scripts\activate  # For Windows
+  source venv/bin/activate  # For macOS/Linux
+  ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Install the necessary dependencies:
+  ```bash
+  pip install -r requirements.txt
+  ```
 
-### `npm run eject`
+### 3. Environment Configuration
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Create a `.env` file in the root directory (if not already present) and add your configuration if needed. Currently, no specific environment variables are required for this setup.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4. Run the Flask Server
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- After setting up the environment and dependencies, you can start the Flask server:
+  ```bash
+  python app.py
+  ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- The server will start and listen on `http://127.0.0.1:5000`.
 
-## Learn More
+## Testing the Backend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can test the backend API by sending POST requests to `http://127.0.0.1:5000/chat`.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Using Thunder Client (VS Code Extension)
 
-### Code Splitting
+1. **Install Thunder Client**:
+   - Open VS Code and go to the Extensions tab (Ctrl+Shift+X).
+   - Search for **Thunder Client** and install it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2. **Send a POST Request**:
+   - Open Thunder Client from the sidebar in VS Code.
+   - Click on the **+ New Request** button.
+   - Set the **Request Type** to **POST**.
+   - Enter the URL `http://127.0.0.1:5000/chat`.
+   
+3. **Configure Request Body**:
+   - In the **Body** section, choose **JSON** as the format.
+   - Add the following JSON data:
+     ```json
+     {
+       "message": "What is France known for?"
+     }
+     ```
+   
+4. **Send the Request**:
+   - Click **Send** to test the backend.
+   - The response should contain the chatbot's answer and suggestions.
 
-### Analyzing the Bundle Size
+## Frontend Setup (React)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 1. Clone Repository
 
-### Making a Progressive Web App
+- Clone the frontend repository using:
+  ```bash
+  git clone https://github.com/yourusername/chatbot-frontend.git
+  cd chatbot-frontend
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 2. Install Dependencies
 
-### Advanced Configuration
+- Install the necessary dependencies:
+  ```bash
+  npm install
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 3. Environment Configuration
 
-### Deployment
+- Navigate to the `src/constants/constant.js` file.
+- Update the `API_URL` variable to match your backend server URL (e.g., `http://127.0.0.1:5000`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 4. Run the React App
 
-### `npm run build` fails to minify
+- To start the React app:
+  ```bash
+  npm start
+  ```
+- The app will be accessible on `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Push Updates to the Repository
+
+Before making any changes or pushing updates to the repository, always make sure to pull the latest changes from the `master` branch.
+
+### 1. Pull Latest Changes
+
+```bash
+git pull origin master
+```
+
+### 2. Push Your Changes
+
+After making changes, commit and push to the `master` branch:
+
+```bash
+git add .
+git commit -m "Your commit message"
+git push origin master
+```
+
+---
+

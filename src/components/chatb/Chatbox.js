@@ -12,6 +12,8 @@ const Chatbox = () => {
   }, [conversation]);
 
   const sendMessage = async (userMessage) => {
+    if (userMessage.trim() === '') return; // Don't send empty messages
+
     // Display the user's message in the chatbox
     setConversation((prevConversation) => [
       ...prevConversation,
@@ -37,6 +39,12 @@ const Chatbox = () => {
   const handleSuggestionClick = (suggestion) => {
     // If the user clicks a suggestion, send that suggestion as a new message
     sendMessage(suggestion);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      sendMessage(message); // Send message when Enter is pressed
+    }
   };
 
   return (
@@ -73,6 +81,7 @@ const Chatbox = () => {
           type="text"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={handleKeyDown} // Add onKeyDown event
           placeholder="Type your message..."
         />
         <button onClick={() => sendMessage(message)}>Send</button>
