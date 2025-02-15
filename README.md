@@ -40,8 +40,8 @@ Ensure you have the following installed on your computer:
 
 - Clone the backend repository using:
   ```bash
-  git clone https://github.com/yourusername/chatbot-backend.git
-  cd chatbot-backend
+  git clone https://github.com/adelyneyana/chatbotOJT.git
+  cd chatbotOJT/backend
   ```
 
 ### 2. Install Dependencies
@@ -106,8 +106,8 @@ You can test the backend API by sending POST requests to `http://127.0.0.1:5000/
 
 - Clone the frontend repository using:
   ```bash
-  git clone https://github.com/yourusername/chatbot-frontend.git
-  cd chatbot-frontend
+  git clone https://github.com/adelyneyana/chatbotOJT.git
+  cd chatbotOJT
   ```
 
 ### 2. Install Dependencies
